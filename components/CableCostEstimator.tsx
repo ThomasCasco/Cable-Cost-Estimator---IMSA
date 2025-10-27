@@ -181,17 +181,22 @@ export default function CableCostEstimator() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
-      <div className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div className="min-h-screen bg-gray-50">
+      <div className="border-b-4 border-red-600 bg-white sticky top-0 z-40 shadow-sm">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                Cable Cost Estimator
-              </h1>
-              <p className="text-muted-foreground mt-1">Sistema de cotización profesional</p>
+            <div className="flex items-center gap-3">
+              <div className="p-3 bg-red-600 rounded-lg">
+                <Zap className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900">
+                  Cable Cost Estimator - IMSA
+                </h1>
+                <p className="text-gray-600 mt-1">Sistema profesional de cotización de cables</p>
+              </div>
             </div>
-            <Button onClick={exportCSV} size="lg" className="gap-2">
+            <Button onClick={exportCSV} size="lg" className="gap-2 bg-red-600 hover:bg-red-700 text-white">
               <Download className="w-4 h-4" />
               Exportar CSV
             </Button>
@@ -201,46 +206,46 @@ export default function CableCostEstimator() {
 
       <div className="container mx-auto px-4 py-8 space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card className="bg-gradient-to-br from-blue-500 to-blue-600 text-white border-0">
+          <Card className="bg-white border-2 border-gray-300 shadow-sm hover:shadow-md transition-shadow">
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium flex items-center gap-2">
-                <Package className="w-4 h-4" />
+              <CardTitle className="text-sm font-medium flex items-center gap-2 text-gray-700">
+                <Package className="w-4 h-4 text-red-600" />
                 Materiales
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold">{formatUSD(subtotalMaterias)}</div>
-              <p className="text-xs text-blue-100 mt-1">USD por metro</p>
+              <div className="text-3xl font-bold text-gray-900">{formatUSD(subtotalMaterias)}</div>
+              <p className="text-xs text-gray-600 mt-1">USD por metro</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-amber-500 to-orange-600 text-white border-0">
+          <Card className="bg-white border-2 border-gray-300 shadow-sm hover:shadow-md transition-shadow">
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium flex items-center gap-2">
-                <Zap className="w-4 h-4" />
+              <CardTitle className="text-sm font-medium flex items-center gap-2 text-gray-700">
+                <Zap className="w-4 h-4 text-red-600" />
                 Costo Fábrica
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold">{formatUSD(costoFabrica)}</div>
-              <p className="text-xs text-orange-100 mt-1">Incluye mermas</p>
+              <div className="text-3xl font-bold text-gray-900">{formatUSD(costoFabrica)}</div>
+              <p className="text-xs text-gray-600 mt-1">Incluye mermas</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-green-500 to-emerald-600 text-white border-0">
+          <Card className="bg-white border-2 border-gray-300 shadow-sm hover:shadow-md transition-shadow">
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium flex items-center gap-2">
-                <DollarSign className="w-4 h-4" />
+              <CardTitle className="text-sm font-medium flex items-center gap-2 text-gray-700">
+                <DollarSign className="w-4 h-4 text-red-600" />
                 Lista USD
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold">{formatUSD(precioListaUSDm)}</div>
-              <p className="text-xs text-green-100 mt-1">Margen {margenPct}%</p>
+              <div className="text-3xl font-bold text-gray-900">{formatUSD(precioListaUSDm)}</div>
+              <p className="text-xs text-gray-600 mt-1">Margen {margenPct}%</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-purple-500 to-pink-600 text-white border-0">
+          <Card className="bg-red-600 border-2 border-red-700 shadow-md text-white">
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-medium flex items-center gap-2">
                 <TrendingUp className="w-4 h-4" />
@@ -249,18 +254,18 @@ export default function CableCostEstimator() {
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold">${new Intl.NumberFormat().format(Math.round(precioListaARSm))}</div>
-              <p className="text-xs text-purple-100 mt-1">TC: {tcARS}</p>
+              <p className="text-xs text-red-100 mt-1">TC: {tcARS}</p>
             </CardContent>
           </Card>
         </div>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Settings className="w-5 h-5" />
+        <Card className="border-2 border-gray-300 shadow-sm">
+          <CardHeader className="bg-gray-100 border-b border-gray-300">
+            <CardTitle className="flex items-center gap-2 text-gray-900">
+              <Settings className="w-5 h-5 text-red-600" />
               Especificación del Cable
             </CardTitle>
-            <CardDescription>Configure las características técnicas</CardDescription>
+            <CardDescription className="text-gray-600">Configure las características técnicas</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -370,10 +375,13 @@ export default function CableCostEstimator() {
         </Card>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>💰 Precios</CardTitle>
-              <CardDescription>Precios unitarios en USD</CardDescription>
+          <Card className="border-2 border-gray-300 shadow-sm">
+            <CardHeader className="bg-gray-100 border-b border-gray-300">
+              <CardTitle className="flex items-center gap-2 text-gray-900">
+                <DollarSign className="w-5 h-5 text-red-600" />
+                Precios
+              </CardTitle>
+              <CardDescription className="text-gray-600">Precios unitarios en USD</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
@@ -387,10 +395,13 @@ export default function CableCostEstimator() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>📊 Costos y Márgenes</CardTitle>
-              <CardDescription>Configuración operativa</CardDescription>
+          <Card className="border-2 border-gray-300 shadow-sm">
+            <CardHeader className="bg-gray-100 border-b border-gray-300">
+              <CardTitle className="flex items-center gap-2 text-gray-900">
+                <TrendingUp className="w-5 h-5 text-red-600" />
+                Costos y Márgenes
+              </CardTitle>
+              <CardDescription className="text-gray-600">Configuración operativa</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
@@ -404,14 +415,17 @@ export default function CableCostEstimator() {
           </Card>
         </div>
 
-        <Card>
-          <CardHeader>
+        <Card className="border-2 border-gray-300 shadow-sm">
+          <CardHeader className="bg-gray-100 border-b border-gray-300">
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle>🔧 Componentes Personalizados</CardTitle>
-                <CardDescription>Agregue extras según necesidad</CardDescription>
+                <CardTitle className="flex items-center gap-2 text-gray-900">
+                  <Settings className="w-5 h-5 text-red-600" />
+                  Componentes Personalizados
+                </CardTitle>
+                <CardDescription className="text-gray-600">Agregue extras según necesidad</CardDescription>
               </div>
-              <Button onClick={addExtraRow} variant="outline" className="gap-2">
+              <Button onClick={addExtraRow} variant="outline" className="gap-2 border-red-600 text-red-600 hover:bg-red-50">
                 <Plus className="w-4 h-4" />Agregar
               </Button>
             </div>
@@ -475,53 +489,56 @@ export default function CableCostEstimator() {
           )}
         </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>📈 Desglose Detallado</CardTitle>
-            <CardDescription>Análisis completo de costos</CardDescription>
+        <Card className="border-2 border-gray-300 shadow-sm">
+          <CardHeader className="bg-gray-100 border-b border-gray-300">
+            <CardTitle className="flex items-center gap-2 text-gray-900">
+              <Package className="w-5 h-5 text-red-600" />
+              Desglose Detallado
+            </CardTitle>
+            <CardDescription className="text-gray-600">Análisis completo de costos</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="space-y-2">
                 <div className="flex justify-between items-baseline">
-                  <span className="text-sm text-muted-foreground">Subtotal Materiales</span>
-                  <span className="text-lg font-semibold">{formatUSD(subtotalMaterias)}</span>
+                  <span className="text-sm text-gray-600">Subtotal Materiales</span>
+                  <span className="text-lg font-semibold text-gray-900">{formatUSD(subtotalMaterias)}</span>
                 </div>
                 <div className="flex justify-between items-baseline">
-                  <span className="text-sm text-muted-foreground">Mermas ({mermasPct}%)</span>
-                  <span className="text-lg font-semibold">{formatUSD(mermasUSDm)}</span>
+                  <span className="text-sm text-gray-600">Mermas ({mermasPct}%)</span>
+                  <span className="text-lg font-semibold text-gray-900">{formatUSD(mermasUSDm)}</span>
                 </div>
                 <div className="flex justify-between items-baseline">
-                  <span className="text-sm text-muted-foreground">Subtotal Procesos</span>
-                  <span className="text-lg font-semibold">{formatUSD(subtotalProcesos)}</span>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <div className="flex justify-between items-baseline">
-                  <span className="text-sm text-muted-foreground">Costo Fábrica</span>
-                  <span className="text-2xl font-bold text-orange-600">{formatUSD(costoFabrica)}</span>
-                </div>
-                <div className="flex justify-between items-baseline">
-                  <span className="text-sm text-muted-foreground">Margen ({margenPct}%)</span>
-                  <span className="text-lg font-semibold">{formatUSD(costoFabrica * (margenPct / 100))}</span>
+                  <span className="text-sm text-gray-600">Subtotal Procesos</span>
+                  <span className="text-lg font-semibold text-gray-900">{formatUSD(subtotalProcesos)}</span>
                 </div>
               </div>
 
               <div className="space-y-2">
                 <div className="flex justify-between items-baseline">
-                  <span className="text-sm text-muted-foreground">Lista (USD/m)</span>
-                  <span className="text-2xl font-bold text-green-600">{formatUSD(precioListaUSDm)}</span>
+                  <span className="text-sm text-gray-600">Costo Fábrica</span>
+                  <span className="text-2xl font-bold text-gray-900">{formatUSD(costoFabrica)}</span>
                 </div>
                 <div className="flex justify-between items-baseline">
-                  <span className="text-sm text-muted-foreground">Lista (ARS/m)</span>
-                  <span className="text-2xl font-bold text-purple-600">${new Intl.NumberFormat().format(Math.round(precioListaARSm))}</span>
+                  <span className="text-sm text-gray-600">Margen ({margenPct}%)</span>
+                  <span className="text-lg font-semibold text-gray-900">{formatUSD(costoFabrica * (margenPct / 100))}</span>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <div className="flex justify-between items-baseline">
+                  <span className="text-sm text-gray-600">Lista (USD/m)</span>
+                  <span className="text-2xl font-bold text-red-600">{formatUSD(precioListaUSDm)}</span>
+                </div>
+                <div className="flex justify-between items-baseline">
+                  <span className="text-sm text-gray-600">Lista (ARS/m)</span>
+                  <span className="text-2xl font-bold text-red-700">${new Intl.NumberFormat().format(Math.round(precioListaARSm))}</span>
                 </div>
               </div>
             </div>
 
-            <div className="mt-6 p-4 bg-muted rounded-lg">
-              <p className="text-sm text-muted-foreground">
+            <div className="mt-6 p-4 bg-gray-100 border-2 border-gray-200 rounded-lg">
+              <p className="text-sm text-gray-700">
                 <strong>Configuración:</strong> {metal} • {seccion} mm² • {fases} fase(s) • {tipologia} • {tension} • 
                 Vaina {SHEATH_MULTIPLIERS.find(s => s.key === sheathKey)?.label} • Pantalla {pantallaMM2} mm²
               </p>
